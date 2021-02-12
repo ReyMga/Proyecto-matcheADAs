@@ -1,120 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/b50399bb27.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./parentModal.css">
-    <title>Proyecto MatcheADAs</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <main>
-        <section class="principalBox">
-            <h1 id="principalTitle" class="title">Comienza a jugar MatcheADAs</h1>
-            <article id="sectionContainerPoints" class="points-container">
-                <div id="containerPoints" class="box-points">
-                    <p>Combo x <span id="box" class="box-number">1</span></p>
-                    <p>Puntos: <span id="points" class="points-number">0</span></p>
-                </div>
-
-                <div id="butonContainer">
-                    <button id="informationButton" class="help-button">
-                        <i class="fas fa-info-circle" aria-hidden="true"></i>
-                    </button>
-
-                    <button id="restartButton" class="restart-button">
-                        <i class="fas fa-undo-alt" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </article>
-
-            <article id="boxGrid"  class="box-grid" >
-                <div id="grid" class="grid-container"></div>
-            </article>
-
-            <article id="boxTime" class="box-time-container">
-                <i class="fas fa-hourglass-end"></i>
-                <p class="timmer">0:00</p>     
-            </article>
-        </section>
-    
-        <section id="modalBoxContainer" class="modal-box">
-            <article id="modalPoster" class="modal-poster-box"  aria-modal="true">
-                <h3 class="title-welcome">¡Bienvenida!</h3>
-
-                <div id="modalContainer" class="modal-box-container">
-                    <p id="txtInformationModal" class="information-modal">
+    <main class="btn-group">
+        <section class="modal-wrapper">
+            <div class="principalBox" data-modal="awesome">
+                <h3 class="modalContainer-title-welcome">¡Bienvenida!</h3>
+                <br>
+                <div id="modalContainerId" class="modal-dialog">
+                    <p id="txtInformationModal" class="modalContainer-information-modal">
                         En MatcheADAs tu objetivo es juntar tres o más ítems del mismo tipo,
                         ya sea en fila o columna. Para eso, selecciona un ítem y a
                         continuación un ítem adyacente para intercambiarlos de lugar.
                     </p>
-
-                    <p id="secondTxtInformation" class="second-txt-information">
+                    <br>
+                    <p id="secondTxtInformation" class="modalContainer-second-txt-information">
                         Si se forma un grupo, esos ítems se eliminarán y ganarás puntos.
                         ¡Sigue armando grupos de 3 o más antes de que se acabe el tiempo!
                     </p>
-
-                    <span id="txtModalSection" class="txt-modal">Controles</span>
-                    <p>Click izquierdo: selección</p>
-                    <p>Enter o Espacio: selección</p>
-                    <p>Flechas o WASD: movimiento e intercambio</p>
+                    <br>
+                    <span id="txtModalSection" class="modalContainer-txt-modal">Controles</span>
+                    <p class="selectLeft">Click izquierdo: selección</p>
+                    <p class="selectEnter">Enter o Espacio: selección</p>
+                    <p class="selectSwitch">Flechas o WASD: movimiento e intercambio</p>
+                    <br>
+                    <p>
+                        <button id="startButton" class="button" data-modaltrigger="miniModal">A Jugar</button>
+                    </p>
                 </div>
-
-                <div class="modal-buttons">
-                    <button id="startButton" class="button-play" >A Jugar</button>
-                </div>
-
-            </article>
+            </div>
+            
+            <div class="modal-box" data-modal="miniModal">
+                <section class="modal-content">
+                    <h3 class="title-modal-newGame">Nuevo Juego</h3>
+                    <article id="difficultyGame" class="container-modal-difficulty">
+                        <p class="select-difficulty">Selecciona una dificultad</p>
+                    </article>
+    
+                    <article id="optionDificultyButtons" class="modalContainer-buttons">
+                        <button class="close-modal" aria-label="close modal" data-close>Fácil</button>
+                        <button class="close-modal" aria-label="close modal" data-close>Normal</button>
+                        <button class="close-modal" aria-label="close modal" data-close>Difícil</button>
+                    </article>
+                </section>
+            </div>
         </section>
-
-        <section id="secondBoxContainer" class="second-modal-box">
-            <h3 id="modalQuestionsUser" class="modal-question"> ¿Deseas Reiniciar el juego?</h3>
-
-            <article id="warningBox" class="warning-container">
-                <p id="informationWarning" class="question-warning-modal">Perderás todo tu puntaje acumulado!</p>
-            </article>
-                
-            <article id="btnGameOption" class="buttons-new-game">
-                <button id="btnCancel" class="cancel-button">Cancelar</button>
-                <button id="btnNewGame" class="newGame-button" >Nuevo Juego</button>
-            </article>
-        </section>
-
-        <section id="thirdContainerModal" class="game-over-section">
-            <h3 class="title-game-over">¡Juego terminado!</h3>
-
-            <article id="finallyPointsModal" class="modal-information">
-                <p class="modal-points">
-                    Puntaje final: <span id="finally-points">0</span>
-                </p>
-            </article>
-
-            <article id="buttonsOptions" class="options-game">
-                <button id="buttonNewGame" class="new-game" >Nuevo Juego</button>
-                <button id="buttonRestart" class="restart-button">Reiniciar</button>
-            </article>
-        </section>
-
-        <section>
-            <h3 class="title-modal-newGame">Nuevo Juego</h3>
-            <article id="difficultyGame" class="container-modal-difficulty">
-                <p class="select-difficulty">Selecciona una dificultad</p>
-            </article>
-
-            <article id="optionDificultyButtons" class="option-difficulty">
-                <button id="easyMode" class="button" >Fácil</button>
-                <button id="normalMode" class="button">Normal</button>
-                <button id="hardMode" class="button" >Difícil</button>
-            </article>
-        </section>
-
-
-
     </main>
 
+    <script>
+        window.onload = function () {
+            modal.init()
+            window.modal.open('awesome');
+        }
+    </script>
+    <script src="modal.js"></script>
     <script src="./app.js"></script>
 </body>
+
 </html>
