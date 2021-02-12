@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   cursor: pointer;
   background-color: #040B39;
-  color: #57359D;
+  color: #bdb6c9;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 
 section {
   width: 100%;
-  padding: 3rem;
+  padding: 2rem;
   overflow: hidden;
   display: table;
 }
