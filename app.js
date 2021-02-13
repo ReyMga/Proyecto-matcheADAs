@@ -18,33 +18,29 @@ function generaTabla(cantFilas) {
     for (let i = 0; i < cantFilas; i++) {
      
         const hilera = document.createElement("tr");
-
         for (var j = 0; j < cantFilas; j++) {
           
             const celda = document.createElement("td");
             celda.id = 'cell_'+i+j;
             celda.row = i;
             celda.column = j;
+            
             const textoCelda = document.createTextNode(getRandomSymbol());
-            celda.appendChild(textoCelda);
-            celda.style.fontSize = 'x-large';
-            celda.style.border = 'none';
+            const span = document.createElement("span");
+            span.className = 'cell-element';
+            span.appendChild(textoCelda);
+            celda.appendChild(span);
             celda.addEventListener('click', ()=>{
              seleccionarCelda(celda)
             })
             hilera.appendChild(celda);
         }
-
-
         tblBody.appendChild(hilera);
     }
 
     tabla.appendChild(tblBody);
 
     body.appendChild(tabla);
-    tabla.setAttribute("border", "3");
-    tabla.style.width = '100%';
-    tabla.style.height = '100%';
     gridContainer.appendChild(tabla);
 }
 
@@ -78,14 +74,19 @@ function seleccionarCelda(celda){
             row : celda.row, 
             column : celda.column
         }
-        celda.style.border='';
+        //celda.style.border='';
+        celda.firstElementChild.className = 'cell-element-selected';
     }else{
         if(!nextSelectedItem(celda.row,celda.column)){
             //Despinto la seleccionada y pinto el nuevo item seleccionado
             let oldSelectedCell = $('cell_'+ selectedCell.row + selectedCell.column);
-            oldSelectedCell.style.border = 'none';
-            celda.style.border = ''
-
+            //oldSelectedCell.style.border = 'none';
+            oldSelectedCell.firstElementChild.className = 'cell-element';
+            celda.firstElementChild.className = 'cell-element-selected';
+            selectedCell = {
+                row : celda.row, 
+                column : celda.column
+            }
         }
 
     }
@@ -95,3 +96,16 @@ function seleccionarCelda(celda){
 function nextSelectedItem(i,j){
     return false;
 }
+
+//Funcion para el límite de tiempo de juego
+
+
+
+var n = 0;
+const l = document.getElementById("timeCounter");
+window.setInterval(function(){
+  
+
+  l.innerHTML = '0:' + n.toString().padStart(2, '0');
+  n++;
+},1000);
