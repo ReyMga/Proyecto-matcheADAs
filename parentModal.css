@@ -55,7 +55,6 @@ h1, h2, h3, h4, h5, h6 {
 
 section {
   width: 100%;
-  padding: 2rem;
   overflow: hidden;
   display: table;
 }
@@ -67,9 +66,5 @@ section .wrapper {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-}
-
-td{
-  font-size: small;
 }
 

@@ -1,41 +1,47 @@
 'use strict'
 
 //Crear tablas dinámicas
+var $ = function( id ) { return document.getElementById( id ); }
+const gridContainer = document.getElementById('gridContainer');
+let selectedCell = null;
 
 function generaTabla(cantFilas) {
     window.modal.closeCurrent()
     // Obtener la referencia del elemento body
-    var body = document.getElementsByTagName("body")[0];
+    const body = document.getElementsByTagName("body")[0];
 
-    // Crea un elemento <table> y un elemento <tbody>
-    var tabla = document.createElement("table");
-    var tblBody = document.createElement("tbody");
+    // Creo un elemento <table> y un elemento <tbody>
+    const tabla = document.createElement("table");
+    const tblBody = document.createElement("tbody");
 
-    // Crea las celdas
-    for (var i = 0; i < cantFilas; i++) {
-        // Crea las hileras de la tabla
-        var hilera = document.createElement("tr");
-
+    // Creo las celdas
+    for (let i = 0; i < cantFilas; i++) {
+     
+        const hilera = document.createElement("tr");
         for (var j = 0; j < cantFilas; j++) {
-            // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-            // texto sea el contenido de <td>, ubica el elemento <td> al final
-            // de la hilera de la tabla
-            var celda = document.createElement("td");
-            var textoCelda = document.createTextNode(getRandomSymbol());
-            celda.appendChild(textoCelda);
+          
+            const celda = document.createElement("td");
+            celda.id = 'cell_'+i+j;
+            celda.row = i;
+            celda.column = j;
+            
+            const textoCelda = document.createTextNode(getRandomSymbol());
+            const span = document.createElement("span");
+            span.className = 'cell-element';
+            span.appendChild(textoCelda);
+            celda.appendChild(span);
+            celda.addEventListener('click', ()=>{
+             seleccionarCelda(celda)
+            })
             hilera.appendChild(celda);
         }
-
-        // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
     }
 
-    // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
-    // appends <table> into <body>
+
     body.appendChild(tabla);
-    // modifica el atributo "border" de la tabla y lo fija a "9";
-    tabla.setAttribute("border", "2");
+    gridContainer.appendChild(tabla);
 }
 
 
@@ -43,7 +49,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-
+//Funcion para generar iconos random
 function getRandomSymbol() {
     const number = getRandomInt(0,5);
     switch (number){
@@ -59,3 +65,47 @@ function getRandomSymbol() {
         return "👾";
     }
 }
+
+//Función para seleccionar celda
+
+function seleccionarCelda(celda){
+    if(!selectedCell){
+        selectedCell = {
+            row : celda.row, 
+            column : celda.column
+        }
+        //celda.style.border='';
+        celda.firstElementChild.className = 'cell-element-selected';
+    }else{
+        if(!nextSelectedItem(celda.row,celda.column)){
+            //Despinto la seleccionada y pinto el nuevo item seleccionado
+            let oldSelectedCell = $('cell_'+ selectedCell.row + selectedCell.column);
+            //oldSelectedCell.style.border = 'none';
+            oldSelectedCell.firstElementChild.className = 'cell-element';
+            celda.firstElementChild.className = 'cell-element-selected';
+            selectedCell = {
+                row : celda.row, 
+                column : celda.column
+            }
+        }
+
+    }
+}
+
+
+function nextSelectedItem(i,j){
+    return false;
+}
+
+//Funcion para el límite de tiempo de juego
+
+
+
+var n = 0;
+const l = document.getElementById("timeCounter");
+window.setInterval(function(){
+  
+
+  l.innerHTML = '0:' + n.toString().padStart(2, '0');
+  n++;
+},1000);
