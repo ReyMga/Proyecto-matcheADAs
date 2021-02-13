@@ -3,7 +3,10 @@
     src: url(./fuentesProyecto/Strjmono.woff);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@font-face {
+    font-family: 'robotic';
+    src: url(./fuentesProyecto/Robota-NonCommercial.woff);
+}
 
 html,
 body {
@@ -44,13 +47,13 @@ td span{
 }
 
 .cell-element-selected {
-    border: solid 1px white;
+    border: solid 1px #BA9C4C;
 }
 
 table {
     width: 100%;
     height: 100%;
-    border: solid 3px;
+    border: solid 2px #7132CB;
 }
 
 
@@ -89,7 +92,7 @@ table {
     width: 100%;
     border-radius: 10px;
     box-sizing: border-box;
-    border: 3px solid #fafafa;
+    border: 3px solid #BA9C4C;
     background: rgb(0 0 0 / 73%);
 }
 
@@ -111,11 +114,11 @@ i {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    background-color: #d81b60;
+    background-color: #1a0c2e;
     padding: 5px 10px;
     border-radius: 8px;
-    border: 3px solid #fafafa;
-    color: #fafafa;
+    border: 3px solid darkolivegreen;
+    color: #7e7b52;
     text-shadow: 1px 1px #424242, 1px -1px #424242, -1px -1px #424242, -1px 1px #424242;
     box-shadow: 0px 0px 5px 4px #00000021 inset;
 }
@@ -142,10 +145,12 @@ i {
 .box-number {
     width: 20px;
     margin-right: 20px;
+    font-family:'Segoe UI';
 }
 
 .points-number {
     margin-left: 15px;
+    font-family:'Segoe UI';
 }
 
 #informationButton,
@@ -176,10 +181,10 @@ i {
     align-items: center;
     font-size: 25px;
     margin: 20px auto 0;
-    background-color: #d81b60;
+    background-color: #7132CB;
     padding: 10px 10px;
     border-radius: 8px;
-    border: 3px solid #fafafa;
+    border: 2px solid #FED201;
     color: #fafafa;
     text-shadow: 1px 1px #424242, 1px -1px #424242, -1px -1px #424242,
         -1px 1px #424242;
