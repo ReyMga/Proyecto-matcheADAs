@@ -1,30 +1,41 @@
-html{
-    height: 100%;
-    margin: 0;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: #ecccea;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    text-shadow: 3px 3px 2px rgb(20, 22, 20);
-    
+@font-face {
+    font-family: 'jedi';
+    src: url(./fuentesProyecto/Strjmono.woff);
+}
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Pacifico', sans-serif;
+  color: #f1dfdf;
+  text-shadow: black 0.1em 0.1em 0.2em
 }
   
 body {
     background-image: url('https://image.freepik.com/vector-gratis/fondo-juego-espacial-paisaje-alienigena-noche-neon_107791-1624.jpg');
     background-size: cover;
+    background-size: cover;
+    background-position-y: 50%;
+    padding: 0 10px;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
   
   
   
-.title {
+.principalTitle {
     text-align: center;
-    font-size: 45px;
+    font-size: 45px; 
     margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'jedi';
     font-weight: 800;
-    color: #d81b60;
-    margin-bottom: 60px;
+    color: #0a0d3f;
+    text-shadow: rgb(223, 196, 48) 0.1em 0.1em 0.2em
 }
   
 .principalBox {
@@ -50,7 +61,6 @@ body {
 .box-grid {
     width: 100%;
     border-radius: 10px;
-    padding: 10px;
     box-sizing: border-box;
     border: 3px solid #fafafa;
     background: rgb(0 0 0 / 73%);
@@ -66,10 +76,10 @@ i {
 .grid-container{
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 350px;
 }
   
-.points-container {
+.pointsSection{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,13 +93,19 @@ i {
     box-shadow: 0px 0px 5px 4px #00000021 inset;
 }
   
-.box-points {
+.boxContainerPrincipal{
+    max-width: 500px;
+    width: 500px;
+}
+
+
+.miniBoxPointsContainer{
     display: flex;
     align-items: center;
     font-size: 22px;
 }
   
-.box-points p {
+.miniBoxPointsContainer p {
     display: flex;
 }
   
@@ -122,42 +138,8 @@ i {
     transform: rotate(-180deg);
 }
   
-.cuadrado {
-    width: var(--cuadrado-tamanio);
-    height: var(--cuadrado-tamanio);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    position: absolute;
-    cursor: pointer;
-    transition: background-color 0.4s, top 0.4s, left 0.4s, bottom 0.4s, right 0.4s, transform 0.2s;
-    font-size: 40px;
-    border: 0;
-    background: transparent;
-    box-sizing: border-box;
-    line-height: 1;
-    padding: 7px;
-    transform: scale(1);
-}
   
-.cuadrado.eliminado {
-    transform: scale(0);
-}
-  
-.cuadrado.seleccionado {
-    border: 1px solid #fafafa;
-}
-  
-.cuadrado.seleccionado .emoji {
-    transform: scale(1.1);
-}
-  
-.cuadrado.presionado {
-    border-style: dashed;
-}
-  
-.contenedor-tiempo {
+.sectionContainerTime{
     width: 110px;
     display: flex;
     justify-content: center;
@@ -174,7 +156,7 @@ i {
     box-shadow: 0px 0px 5px 4px #00000021 inset;
 }
   
-.tiempo-restante {
+.leftTime{
     margin: 0;
     margin-left: 10px;
     line-height: 1;
@@ -268,7 +250,7 @@ i {
     height: 100%;
     background-color: rgba(0, 0, 0, .25);
     z-index: 100;
-    visibility: hidden;
+    /* visibility: hidden; */
     opacity: 0;
     transition: .35s ease-in-out;
     pointer-events: none;
