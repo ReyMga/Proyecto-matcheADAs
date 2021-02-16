@@ -8,7 +8,10 @@ const l = document.getElementById("timeCounter");
 const gridContainer = document.getElementById('gridContainer');
 let selectedCell = null;
 let nivel;
+let paused=false;
+let timmer;
 
+//Boton reiniciar juego con mismo nivel de partida
 function reiniciar()
 {
     generaTabla(nivel);
@@ -110,21 +113,19 @@ function nextSelectedItem(i, j) {
 
 
 //Funcion para el límite de tiempo de juego
-
-
-
-
-
 function counterInitialitation() {
     var n = 30;
     l.innerHTML = '0:' + n.toString().padStart(2, '0');
     n--;
-    const timmer = window.setInterval(function () {
-        l.innerHTML = '0:' + n.toString().padStart(2, '0');
-        n--;
-        if(n<0){
-            clearInterval(timmer);
-            window.modal.open('gameOverModal');
+    timmer = window.setInterval(function () {
+        if(!paused)
+        {
+            l.innerHTML = '0:' + n.toString().padStart(2, '0');
+            n--;
+            if(n<0){
+                clearInterval(timmer);
+                window.modal.open('gameOverModal');
+            }
         }
     }, 1000);
 }
@@ -137,5 +138,39 @@ function newGame(){
     window.modal.open('miniModal');
 }
 
-//Boton reiniciar juego con mismo nivel de partida
+
+
+//Boton información
+
+function informationButton(){
+    paused=true;
+    window.modal.open('awesome');
+
+}
+
+
+function empezarJuego(){
+    window.modal.closeCurrent();
+    !paused ?  window.modal.open('miniModal') : paused=false;
+}
+
+
+//Boton Restart
+function restartButtonGame(){
+    paused=true;
+    window.modal.open('leaveGame');
+}
+
+function dontRestartGame(){
+    window.modal.closeCurrent();
+    !paused ?  window.modal.open('leaveGame') : paused=false;
+}
+
+function newRestartGame(){
+    paused=false;
+    clearInterval(timmer);
+    window.modal.closeCurrent();
+    window.modal.open('miniModal');
+}
+
 
