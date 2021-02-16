@@ -26,10 +26,10 @@
               </div>
 
               <div>
-                <button id="informationButton">
+                <button id="informationButton" onclick="informationButton()" >
                   <i class="fas fa-info-circle" aria-hidden="true"></i>
                 </button>
-                <button id="restartButton">
+                <button id="restartButton" onclick="restartButtonGame()">
                   <i class="fas fa-undo-alt" aria-hidden="true"></i>
                 </button>
               </div>
@@ -69,25 +69,25 @@
                     <p class="selectSwitch">Flechas o WASD: movimiento e intercambio</p>
                     <br>
                     <p>
-                        <button id="startButton" class="button" data-modaltrigger="miniModal">A Jugar</button>
+                        <button id="startButton" class="button" onclick="empezarJuego()">A Jugar</button>
                     </p>
                 </div>
             </div>
             
             <div class="modal-wrapper restart" id="restarGame" data-modal="leaveGame">
-                <h2 id="restartModalGame btn" class="principalBox">Reiniciar juego?</h2>
+                <h2 id="restartModalGame" class="principalBox">Reiniciar juego?</h2>
                 <div class="modal-box-restart">
                     <p class="txt-points">Perderás todo tu puntaje acumulado!</p>
                 </div>
 
                 <div id="bottonRestartOptions" class="option-modal-game">
-                <button class="btn" id="buttonNewGameCancel">Cancelar</button>
-                <button class="btn" id="buttonNewGame">Nuevo Juego</button>
+                <button class="btn" id="buttonNewGameCancel" onclick="dontRestartGame()">Cancelar</button>
+                <button class="btn" id="buttonNewGame" onclick="newRestartGame()">Nuevo Juego</button>
                 </div>
             </div>
 
             <div class="modal-box over" id="gameOver" data-modal="gameOverModal">
-                <h2 class="title-game-over">¡Juego terminado!</h2>
+                <h2 class="title-game-over restart">¡Juego terminado!</h2>
                 <div class="box-container-modal">
                     <p class="txt-points">
                         Puntaje final: <span id="txt-points">0</span>

@@ -366,10 +366,23 @@ i {
 }
 
 .restart{
-    width: 40%;
     height: 30%; 
 }
 
 .over{
     display: block;
+}
+
+
+#restartModalGame{
+    top: 8px;
+    width: 200px;
+    font-size: 20px;
+    background-color: transparent;
+    color: yellow;
+}
+
+.txt-points{
+    margin-top: 8%;
+    color: lightyellow;
 }
