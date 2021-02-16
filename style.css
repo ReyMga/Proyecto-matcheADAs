@@ -106,7 +106,7 @@ i {
 .grid-container {
     position: relative;
     width: 100%;
-    height: 350px;
+    height: 365px;
 }
 
 .pointsSection {
@@ -363,4 +363,13 @@ i {
     cursor: pointer;
     background-color: #040B39;
     color: #bdb6c9;
+}
+
+.restart{
+    width: 40%;
+    height: 30%; 
+}
+
+.over{
+    display: block;
 }

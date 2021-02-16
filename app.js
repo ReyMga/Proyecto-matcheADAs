@@ -4,15 +4,23 @@
 var $ = function (id) {
     return document.getElementById(id);
 }
+const l = document.getElementById("timeCounter");
 const gridContainer = document.getElementById('gridContainer');
 let selectedCell = null;
+let nivel;
+
+function reiniciar()
+{
+    generaTabla(nivel);
+}
 
 function generaTabla(cantFilas) {
+    nivel=cantFilas;
     window.modal.closeCurrent()
     counterInitialitation();
     // Obtener la referencia del elemento body
     const body = document.getElementsByTagName("body")[0];
-
+    gridContainer.innerHTML='';
     // Creo un elemento <table> y un elemento <tbody>
     const tabla = document.createElement("table");
     const tblBody = document.createElement("tbody");
@@ -43,7 +51,7 @@ function generaTabla(cantFilas) {
 
     tabla.appendChild(tblBody);
 
-    body.appendChild(tabla);
+    //body.appendChild(tabla);
     gridContainer.appendChild(tabla);
 }
 
@@ -100,18 +108,34 @@ function nextSelectedItem(i, j) {
     return false;
 }
 
+
 //Funcion para el límite de tiempo de juego
 
 
 
-var n = 0;
-const l = document.getElementById("timeCounter");
+
 
 function counterInitialitation() {
+    var n = 30;
     l.innerHTML = '0:' + n.toString().padStart(2, '0');
-    n++;
-    window.setInterval(function () {
+    n--;
+    const timmer = window.setInterval(function () {
         l.innerHTML = '0:' + n.toString().padStart(2, '0');
-        n++;
+        n--;
+        if(n<0){
+            clearInterval(timmer);
+            window.modal.open('gameOverModal');
+        }
     }, 1000);
 }
+
+
+//Boton nuevo juego al finalizar partida
+
+function newGame(){
+    window.modal.closeCurrent()
+    window.modal.open('miniModal');
+}
+
+//Boton reiniciar juego con mismo nivel de partida
+
