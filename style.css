@@ -373,6 +373,11 @@ i {
     display: block;
 }
 
+.eliminado {
+    transform: scale(0);
+}
+  
+
 
 #restartModalGame{
     top: 8px;
