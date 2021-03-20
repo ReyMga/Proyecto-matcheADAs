@@ -31,14 +31,6 @@
  - Entrar a la carpeta del proyecto y abrirlo en tu IDE
 <br>
 ***
-
-## Esta página fue construida con 🛠️
-
-#### [HTML]
-#### [CSS]
-#### [JAVASCRIPT]
-
-***
 # Expresiones de Gratitud 🎁
 
 ### Este proyecto se hizo posible gracias a la  ayuda y  guía de nuestros profes [Jonhks](https://github.com/Jonhks) & [Leydy](https://github.com/leydyk93/)
